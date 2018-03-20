@@ -34,8 +34,10 @@
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/bootstrap/dist/js/bootstrap.min.js',
       'app.js',
-      'view1/controllers/view1.js',
-      'view2/controllers/view2.js',
+      'inbox/controllers/inboxaCtrl.js',
+      'inbox/services/inboxService.js',
+      'email/controllers/emailCtrl.js',
+      'email/services/emailService.js'
       // 'components/version/version.js',
       // 'components/version/version-directive.js',
       // 'components/version/interpolate-filter.js'
@@ -48,10 +50,10 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
-  <ul class="menu">
+  <!-- <ul class="menu">
     <li><a href="#!/view1">view1</a></li>
     <li><a href="#!/view2">view2</a></li>
-  </ul>
+  </ul> -->
 
   <div ng-view></div>
 

@@ -7,13 +7,13 @@ var app = angular.module('myApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
   $routeProvider
-    .when('/view1', {
-      templateUrl: 'view1/views/view1.html',
-      controller: 'controllers/View1Ctrl'
+    .when('/inbox', {
+      templateUrl: 'inbox/views/inbox.html',
+      controller: 'inboxCtrl'
     })
-    .when('/view2', {
-      templateUrl: 'view2/views/view2.html',
-      controller: 'controllers/View2Ctrl'
+    .when('/email', {
+      templateUrl: 'email/views/email.html',
+      controller: 'emailCtrl'
     })
-    .otherwise({redirectTo: '/view1'});
+    .otherwise({redirectTo: '/inbox'});
 }]);

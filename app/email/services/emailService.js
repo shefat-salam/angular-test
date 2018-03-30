@@ -1,5 +1,30 @@
 'use strict';
+app.factory('EmailFactory', function emailFactory ($q, $http, $routeParams) {
+    'use strict';
+    var exports = {};
 
-app.factory('emailFactory', function emailFactory ($q, $http, $location) {
+    exports.reply = function (message) {
+      if (message) {
+        // we would obviously hit the back-end here
+        // but let's just alert what we've typed
+        alert('Reply content: ' + message);
+      }
+    };
 
-})
+    exports.getMessage = function (params) {
+        debugger;
+      if ( params.id ) {
+        var deferred = $q.defer();
+        $http.get('../../mock-data/message/' + params.id + '.json')
+          .success(function (data) {
+            deferred.resolve(data);
+          })
+          .error(function (data) {
+            deferred.reject(data);
+          });
+        return deferred.promise;
+      }
+    };
+
+    return exports;
+  });

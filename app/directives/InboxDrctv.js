@@ -3,32 +3,51 @@
     return {
       restrict: 'EA',
       replace: true,
-      scope: true,
+      scope: false,
       templateUrl: '../directives/inbox.tmpl.html',
       controllerAs: 'inbox',
-
       controller: function (InboxFactory) {
         this.messages = [];
 
+     
         this.goToMessage = function (id) {
           InboxFactory.goToMessage(id);
         };
         
-        this.deleteMessage = function (id, index) {
-          InboxFactory.deleteMessage(id, index);
-        };
-        
+        // this.deleteMessage = function (messages) {
+        //   InboxFactory.deleteMessage(messages);
+        // };
+       
         InboxFactory.getMessages()
           .then( angular.bind( this, function then() {
               this.messages = InboxFactory.messages;
-            }) );
+            }) 
+          );    
 
       },
       link: function (scope, element, attrs, ctrl) {
-        /* 
-          by convention we do not $ prefix arguments to the link function
-          this is to be explicit that they have a fixed order
-        */
+        scope.isAll = false;
+        scope.selectAll = function(messages) {
+         
+            if (scope.isAll === false) {
+                angular.forEach(messages, function(messages) {
+                  messages.checked = true;
+                });
+                scope.isAll = true;
+            } else {
+                angular.forEach(messages, function(messages) {
+                  messages.checked = false;
+                });
+                scope.isAll = false;
+            }
+        };
+        scope.deleteMessage = function (messages) {
+            angular.forEach(messages, function(row, index) {
+                if ( messages[index].checked) {
+                    messages.splice(index, 1);
+                }
+            });
+        };
       }
     }
   });

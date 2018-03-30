@@ -1,14 +1,10 @@
-/**
- * Directive: Email <email></email>
- */
-
 app.directive('email', function EmailDrctv ($timeout) {
     'use strict';
     return {
       restrict: 'E',
       replace: true,
       scope: true,
-      templateUrl: "js/directives/email.tmpl.html",
+      templateUrl: "../directives/email.tmpl.html",
       controllerAs: 'email',
       controller: function ($routeParams, $scope, EmailFactory) {
         this.message = {};

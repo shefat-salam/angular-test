@@ -9,11 +9,17 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider
     .when('/inbox', {
       templateUrl: 'inbox/views/inbox.html',
-      controller: 'inboxCtrl'
+      controller: 'inboxCtrl',
+      controllerAs: 'inbox'
     })
-    .when('/email', {
+    .when('/inbox/email/:id', {
       templateUrl: 'email/views/email.html',
-      controller: 'emailCtrl'
+      controller: 'emailCtrl',
+      controllerAs: 'email'
     })
     .otherwise({redirectTo: '/inbox'});
-}]);
+}]).run(function($rootScope){
+  $rootScope.$on('$routeChangeError', function(event, current, previous, rejection){
+    console.log(event, current, previous, rejection)
+  })
+});

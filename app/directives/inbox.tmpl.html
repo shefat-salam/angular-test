@@ -10,7 +10,8 @@
     </nav>
     <div class="padding15px">
         <input name="all" type="checkbox" ng-click="selectAll(inbox.messages)" />
-        <input type="button" class="btn"  ng-click="deleteMessage(inbox.messages)" value="Delete">
+        <input type="button" class="btn deleteBtn" disabled="disabled"  ng-click="deleteMessage(inbox.messages)" value="Delete">
+            
     </div>
     <div class="table-responsive"> 
         <table class="table table-striped table-bordered table-hover dataTables-example"> 

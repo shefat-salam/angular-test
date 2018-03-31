@@ -15,18 +15,6 @@
         InboxFactory.getMessages()
           .then( angular.bind( this, function() {this.messages = InboxFactory.messages;}) );  
            
-          $scope.$watch("messages", function(n, o) {
-            var checked = $filter("filter")(n, { checked: true });
-            debugger;
-            console.log(checked);
-            if (checked.length) {
-                scope.selected = checked;
-                $('.deleteBtn').removeAttr('disabled');
-            } else {
-                $('.deleteBtn').attr('disabled', 'disabled');
-            }
-        }, true);  
-
       },
       link: function (scope, element, attrs, ctrl) {
         
